@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/header/header.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { TempComponent } from './components/temp/temp.component';
+import { RentalListComponent } from './components/rental/rental-list/rental-list.component';
+import { RentalListItemComponent } from './components/rental/rental-list-item/rental-list-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     RentalComponent,
-    TempComponent
+    TempComponent,
+    RentalListComponent,
+    RentalListItemComponent,
   ],
   imports: [
     BrowserModule,
