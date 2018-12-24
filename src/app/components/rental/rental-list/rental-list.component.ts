@@ -14,8 +14,10 @@ export class RentalListComponent implements OnInit {
 
   ngOnInit() {
     this.rentalService.getRentals().subscribe(
-      rentals => {
-        this.rentals = rentals;
+      result => {
+        this.rentals = result;
+        console.log(this.rentals);
+        
       }
     );
   }
