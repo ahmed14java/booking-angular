@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/header/header.component';
 import { RentalModule } from './components/rental/rental.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { RentalModule } from './components/rental/rental.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RentalModule
+    RentalModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

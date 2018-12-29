@@ -3,8 +3,7 @@
     <div class="row">
       <div class="col-md-6"><img src="{{ rental.image }}" alt="" /></div>
       <div class="col-md-6">
-        <!-- Will be replaced with map !!!! -->
-        <img src="{{ rental.image }}" alt="" />
+        <app-map [location]="rental.city + ', '+ rental.street"></app-map>
       </div>
     </div>
   </div>
@@ -49,7 +48,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">BOOKING</div>
+      <div class="col-md-4"><app-rental-detail-booking [price]="rental.dailyRate"></app-rental-detail-booking></div>
     </div>
   </div>
 </section>
