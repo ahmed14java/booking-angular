@@ -30,8 +30,6 @@ usersController.login = async (req, res) => {
       const token = jwt.sign({_id: user._id , username: user.username} , secret, {expiresIn: expire});
       return res.send({token});
     }else {
-      console.log('not matched');
-      
       return res.status(422).send({
         errors: [
           { title: "Wrong Data!", detail: "Wrong email or password" }
@@ -39,7 +37,6 @@ usersController.login = async (req, res) => {
       });
     }
   } catch (err) {
-    console.log('-----------------' ,err);
     return res.status(422).json({ errors: normalizeErrors(err.errors) });
   }
 };
