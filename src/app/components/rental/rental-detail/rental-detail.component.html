@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-6"><img src="{{ rental.image }}" alt="" /></div>
       <div class="col-md-6">
-        <app-map [location]="rental.city + ', '+ rental.street"></app-map>
+        <app-map [location]="rental.city + ', ' + rental.street"></app-map>
       </div>
     </div>
   </div>
@@ -13,10 +13,10 @@
       <div class="col-md-8">
         <div class="rental">
           <h2 class="rental-type {{ rental.category }}">
-            {{ rental.shared ? 'Shared' : 'whole' }} {{ rental.category }}
+            {{ rental.shared ? "Shared" : "whole" }} {{ rental.category }}
           </h2>
           <h1 class="rental-title">{{ rental.title }}</h1>
-          <h2 class="rental-city">{{ rental.city | ucwords}}</h2>
+          <h2 class="rental-city">{{ rental.city | ucwords }}</h2>
           <div class="rental-room-info">
             <span
               ><i class="fa fa-building"></i
@@ -29,7 +29,7 @@
               ><i class="fa fa-bed"></i> {{ rental.bedrooms + 2 }} beds</span
             >
           </div>
-          <p class="rental-description">{{ rental.description | ucwords}}</p>
+          <p class="rental-description">{{ rental.description | ucwords }}</p>
           <hr />
           <div class="rental-assets">
             <h3 class="title">Assets</h3>
@@ -48,7 +48,11 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4"><app-rental-detail-booking [price]="rental.dailyRate"></app-rental-detail-booking></div>
+      <div class="col-md-4">
+        <app-rental-detail-booking
+          [rental]="rental"
+        ></app-rental-detail-booking>
+      </div>
     </div>
   </div>
 </section>

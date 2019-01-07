@@ -1,4 +1,7 @@
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from "@angular/core";
+import {ToastaModule} from 'ngx-toasta';
+
 import { CommonModule } from "@angular/common";
 import { RentalComponent } from "./rental.component";
 import { RentalListComponent } from "./rental-list/rental-list.component";
@@ -13,6 +16,10 @@ import { MapModule } from "src/app/common/map/map.module";
 import { AuthGuard } from "src/app/auth/shared/auth.guard";
 import { Daterangepicker } from "ng2-daterangepicker";
 import { RentalDetailBookingComponent } from './rental-detail/rental-detail-booking/rental-detail-booking.component';
+import { HelperService } from 'src/app/common/service/helper.service';
+import { FormsModule } from '@angular/forms';
+import { BookingService } from '../booking/shared/booking.service';
+
 
 const routes: Routes = [
   {
@@ -36,7 +43,9 @@ const routes: Routes = [
     HttpClientModule,
     NgPipesModule,
     MapModule,
-    Daterangepicker
+    Daterangepicker,
+    FormsModule,
+    ToastaModule.forRoot()
   ],
   declarations: [
     RentalComponent,
@@ -46,6 +55,7 @@ const routes: Routes = [
     UppercasePipe,
     RentalDetailBookingComponent
   ],
-  providers: [RentalService]
+  providers: [RentalService , HelperService , BookingService],
+  exports: [BrowserModule, ToastaModule]
 })
 export class RentalModule {}

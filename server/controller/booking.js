@@ -40,7 +40,7 @@ bookingController.createBooking = (req , res) => {
                 return res.status(422).send({errors: 'Invalid Booking' , detail: 'Choosen date are already taken!'});
             }
 
-            return res.json({booking: foundRental});
+            // return res.json({startAt: newBooking.startAt , endAt: newBooking.endAt});
         });
 }
 
