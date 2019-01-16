@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const bodyParser = require('body-parser')
 const config = require('./config/dev');
 const Rental = require('./models/Rental');
+const FakeDB = require('./fake-db');
 
 const rentalRoutes = require('./routes/rentals');
 const userRoutes = require('./routes/users');
@@ -16,6 +17,8 @@ mongoose.connect(config.MONGO_DB_URL,
 );
 mongoose.connection.on('connected' , () => {
   console.log('Connected to the database');
+  const fakeDb = new FakeDB();
+  // fakeDb.seedDB();
 })
 mongoose.connection.on('error' , (err) => {
   console.log(`Failed to connect to the database: ${err}`);

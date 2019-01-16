@@ -7,7 +7,8 @@ router.get('/secret' ,userController.authMiddlware , function(req,res){
     res.send({'secret': true})
 });
 
-router.get('' , rentalController.findAll);
 router.get('/:id' , rentalController.findById);
+router.get('' , rentalController.findAll);
+router.post('' , userController.authMiddlware , rentalController.createRental);
 
 module.exports = router;
