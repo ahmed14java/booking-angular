@@ -21,7 +21,7 @@ bookingController.createBooking = (req , res) => {
                 return res.status(422).send({errors: normalizeErrors(err.errors)})
             }
             if (foundRental.user.id  === user.id) {
-                return res.status(422).send({errors: 'Invalid User' , detail: 'Cannot create booking on your rental'})
+                return res.status(422).send({errors:[{title: 'Invalid User' , detail: 'Cannot create booking on your rental'}]})
             }
             // Check here for validate booking
             if (isValidBooking(newBooking , foundRental)) {
@@ -37,7 +37,7 @@ bookingController.createBooking = (req , res) => {
                     return res.json({startAt: newBooking.startAt , endAt: newBooking.endAt});
                 });
             }else {
-                return res.status(422).send({errors: 'Invalid Booking' , detail: 'Choosen date are already taken!'});
+                return res.status(422).send({errors: [{title: 'Invalid Booking' , detail: 'Choosen date are already taken!'}]});
             }
 
             // return res.json({startAt: newBooking.startAt , endAt: newBooking.endAt});

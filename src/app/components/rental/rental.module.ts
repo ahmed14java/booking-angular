@@ -19,6 +19,8 @@ import { RentalDetailBookingComponent } from './rental-detail/rental-detail-book
 import { HelperService } from 'src/app/common/service/helper.service';
 import { FormsModule } from '@angular/forms';
 import { BookingService } from '../booking/shared/booking.service';
+import { SearchRentalComponent } from './search-rental/search-rental.component';
+import { RentalCreateComponent } from './rental-create/rental-create.component';
 
 
 const routes: Routes = [
@@ -27,11 +29,12 @@ const routes: Routes = [
     component: RentalComponent,
     children: [
       { path: "", component: RentalListComponent },
+      { path: "new", component: RentalCreateComponent , canActivate: [AuthGuard]},
       {
         path: ":rentalId",
-        component: RentalDetailComponent,
-        canActivate: [AuthGuard]
-      }
+        component: RentalDetailComponent
+      },
+      {path: ':city/homes' , component: SearchRentalComponent}
     ]
   }
 ];
@@ -53,7 +56,9 @@ const routes: Routes = [
     RentalListItemComponent,
     RentalDetailComponent,
     UppercasePipe,
-    RentalDetailBookingComponent
+    RentalDetailBookingComponent,
+    SearchRentalComponent,
+    RentalCreateComponent
   ],
   providers: [RentalService , HelperService , BookingService],
   exports: [BrowserModule, ToastaModule]

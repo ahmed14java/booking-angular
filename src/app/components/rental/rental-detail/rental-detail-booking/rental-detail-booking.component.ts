@@ -9,6 +9,7 @@ import { BookingService } from 'src/app/components/booking/shared/booking.servic
 import { Router } from '@angular/router';
 import {ToastaService, ToastaConfig, ToastOptions, ToastData} from 'ngx-toasta';
 import { DaterangePickerComponent } from 'ng2-daterangepicker';
+import { AuthService } from 'src/app/auth/shared/auth.service';
 
 
 @Component({
@@ -47,7 +48,8 @@ export class RentalDetailBookingComponent implements OnInit {
               private router: Router,
               private modalService: NgbModal,
               private toastaService:ToastaService, 
-              private toastaConfig: ToastaConfig
+              private toastaConfig: ToastaConfig,
+              public auth: AuthService
               ) {
                this.toastaConfig.position = 'top-right';
               }

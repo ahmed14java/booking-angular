@@ -14,7 +14,7 @@ rentalController.findAll = async (req,res) => {
                     return res.status(422).send({errors: normalizeErrors(err.errors)});
                 }
                 if (city && foundRentals.length === 0) {
-                    return res.status(422).send({errors: 'No Rental Found!' , detail: `There are no rentals for city ${city}`});
+                    return res.status(422).send({errors: [{title: 'No Rental Found!' , detail: `There are no rentals for city ${city}`}]});
                 }
                 return res.json(foundRentals);
             });
