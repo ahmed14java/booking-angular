@@ -3,6 +3,7 @@ import { Rental } from '../shared/model/rental';
 import { RentalService } from '../shared/rental.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-rental-create',
@@ -17,7 +18,7 @@ export class RentalCreateComponent implements OnInit {
   errors: any[] = [];
 
 
-  constructor(private rentalService: RentalService , private router: Router) { }
+  constructor(private rentalService: RentalService , private router: Router ) { }
 
   ngOnInit() {
     this.rental.shared = false;

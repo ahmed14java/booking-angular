@@ -63,9 +63,11 @@ rentalController.deleteRental = async (req , res) => {
                 .populate('user' , '_id')
                 .populate({
                     path: 'bookings',
-                    select: 'startAt',
-                    match: { startAt: { $gt: new Date() } }
+                    // select: 'startAt',
+                    // match: { startAt: { $gt: new Date() } }
                 }).exec(function(err , foundRental){
+                    console.log(foundRental);
+                    
                     if (err) {
                         return res.status(422).send({errors: normalizeErrors(err.errors)});
                     }

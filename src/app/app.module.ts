@@ -7,13 +7,14 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/header/header.component';
 import { RentalModule } from './components/rental/rental.module';
 import { AuthModule } from './auth/auth.module';
-
+import { ManageModule } from './components/manage/manage.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -22,6 +23,7 @@ import { AuthModule } from './auth/auth.module';
     RentalModule,
     AuthModule,
     NgbModule,
+    ManageModule
     
   ],
   providers: [],

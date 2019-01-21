@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import {ToastaService, ToastaConfig, ToastOptions, ToastData} from 'ngx-toasta';
 import { DaterangePickerComponent } from 'ng2-daterangepicker';
 import { AuthService } from 'src/app/auth/shared/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -49,7 +50,8 @@ export class RentalDetailBookingComponent implements OnInit {
               private modalService: NgbModal,
               private toastaService:ToastaService, 
               private toastaConfig: ToastaConfig,
-              public auth: AuthService
+              public auth: AuthService, 
+              private toastr: ToastrService
               ) {
                this.toastaConfig.position = 'top-right';
               }
@@ -112,7 +114,10 @@ private addNewBookedOutDate(bookingDate: any){
         this.modalRef.close();
         // this.router.navigate([`/rentals/${this.rental._id}`]);
         this.resetDatePicker();
-        this.toastaService.success({title: "Toast It!",msg: "Mmmm, tasties...",showClose: true,timeout: 5000,theme: "bootstrap",});
+        this.toastr.success('booking was created successfully' , 'Success' , {
+          timeOut: 3000,
+          positionClass: 'toast-top-right'
+        });
       }, errorResponse => {
         this.errors = errorResponse.error.errors;
       }

@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
 import { BookingService } from '../booking/shared/booking.service';
 import { SearchRentalComponent } from './search-rental/search-rental.component';
 import { RentalCreateComponent } from './rental-create/rental-create.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 const routes: Routes = [
@@ -48,7 +49,8 @@ const routes: Routes = [
     MapModule,
     Daterangepicker,
     FormsModule,
-    ToastaModule.forRoot()
+    ToastaModule.forRoot(),
+    ToastrModule.forRoot()
   ],
   declarations: [
     RentalComponent,

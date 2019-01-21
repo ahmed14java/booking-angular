@@ -1,0 +1,37 @@
+<section id="userRentals">
+    <h1 class="page-title">My Rentals</h1>
+    <div class="row">
+      <ng-container *ngIf="rentals && rentals.length > 0"> <!-- Check for rentals length -->
+        <div class="col-md-4" *ngFor="let rental of rentals; let i = index;"> <!-- Iterate Rentals -->
+          <div class="card text-center">
+            <div class="card-block">
+              <h4 class="card-title">{{rental.title}} - {{rental.city | ucwords}} </h4> <!-- Rental Title - Rental City -->
+              <a class="btn btn-ghost mr-1" routerLink="/rentals/{{rental._id}}">Go to Rental</a>
+              <span *ngIf="rental.bookings.length > 0"> <!-- Check for rental bookings length -->
+                <app-manage-rental-booking [bookings]="rental.bookings"></app-manage-rental-booking>
+              </span>
+            </div>
+            <div class="card-footer text-muted">
+               <p>Created at {{rental.createdAt | dateFormat}} </p> <!-- Created At -->
+               <button (click)="rentalDeleteIndex = i" 
+                        *ngIf="rentalDeleteIndex !== i"
+                        type="button" class="btn btn-danger btn-delete">Delete</button> <!-- Delete Rental Button -->
+                <div *ngIf="rentalDeleteIndex === i">
+                  <p class="confirm-message">Do you confirm delete ?</p>
+                  <button class="btn btn-success mr-1" (click)="deleteRental(rental._id)" >Yes</button> 
+                  <button (click)="rentalDeleteIndex = undefined" class="btn btn-danger">No</button> 
+                </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <div class="col-md-8" *ngIf="rentals && rentals.length === 0"> <!-- Check if rentals length === 0 -->
+        <div class="alert alert-warning">
+          You dont have any rentals currenty created. If you want advertised your property
+          please follow this link.
+          <a class="btn btn-danger" routerLink="/rentals/new">Register Rental</a> <!-- Link to rentals/new -->
+        </div>
+      </div>
+    </div>
+  </section>
+  
